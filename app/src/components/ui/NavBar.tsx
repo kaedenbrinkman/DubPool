@@ -18,7 +18,7 @@ class NavBar extends Component<NavBarProps, NavBarState> {
   }
   render() {
     const mainMenu = [
-      { name: "Dashboard", link: "/", for: "scout" },
+      { name: "Dashboard", link: "/" },
     ];
     return (
       <header className="py-3 mb-3 border-bottom no-print">
@@ -80,10 +80,10 @@ class NavBar extends Component<NavBarProps, NavBarState> {
                 />
               </Link>
               <ul className="dropdown-menu text-small shadow">
-                <li>
-                  <a className="dropdown-item" href="/dashboard/">
-                    Exit app
-                  </a>
+              <li>
+                  <Link className="dropdown-item" to="/privacy">
+                    Privacy
+                  </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to="/settings">
@@ -98,7 +98,7 @@ class NavBar extends Component<NavBarProps, NavBarState> {
                     className="dropdown-item"
                     onClick={() => {
                       localStorage.clear();
-                      window.location.href = "/log-in/log-out.php";
+                      window.location.href = "/";
                     }}
                   >
                     Sign out
