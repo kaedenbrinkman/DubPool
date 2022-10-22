@@ -1,8 +1,14 @@
 import { Component } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Dashboard from "../dashboard/Dashboard";
+import AboutHeader from "../about/AboutHeader";
+import AboutPage from "../about/AboutPage";
+import HowItWorks from "../about/HowItWorks";
+import Matches from "../matches/Matches";
 import LoginPage from "../login/LoginPage";
+import SignUpPage from "../login/SignUp";
 import NavBar from "./NavBar";
+import Messages from "../messages/Messages";
+import Onboarding from "../onboarding/Onboarding";
 
 interface MainPageProps { }
 
@@ -25,13 +31,25 @@ class MainPage extends Component<MainPageProps, MainPageState> {
   }
   render() {
     if (!this.state.user) {
-      return <LoginPage />;
+      return (
+        <BrowserRouter>
+          <AboutHeader />
+          <Routes>
+            <Route path="/" element={<AboutPage />} />
+            <Route path="/how-it-works" element={<HowItWorks />} />
+            <Route path="/log-in" element={<LoginPage />} />
+            <Route path="/sign-up" element={<SignUpPage />} />
+          </Routes>
+        </BrowserRouter>
+      );
     }
     return (
       <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<Matches />} />
+          <Route path="/messages" element={<Messages />} />
+          <Route path="/welcome" element={<Onboarding />} />
         </Routes>
       </BrowserRouter>
     );
