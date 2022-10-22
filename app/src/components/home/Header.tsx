@@ -1,12 +1,12 @@
 import { Component } from "react";
 import { Link } from "react-router-dom";
 
-interface AboutHeaderProps { }
+interface HeaderProps { }
 
-interface AboutHeaderState { }
+interface HeaderState { }
 
-class AboutHeader extends Component<AboutHeaderProps, AboutHeaderState> {
-  constructor(props: AboutHeaderProps) {
+class Header extends Component<HeaderProps, HeaderState> {
+  constructor(props: HeaderProps) {
     super(props);
     this.state = {};
   }
@@ -36,4 +36,4 @@ class AboutHeader extends Component<AboutHeaderProps, AboutHeaderState> {
   }
 }
 
-export default AboutHeader;
+export default Header;

@@ -1,13 +1,13 @@
 import { Component } from "react";
 import { Link } from "react-router-dom";
-import "./AboutPage.css";
+import "./HomePage.css";
 
-interface AboutPageProps { }
+interface HomePageProps { }
 
-interface AboutPageState { }
+interface HomePageState { }
 
-class AboutPage extends Component<AboutPageProps, AboutPageState> {
-  constructor(props: AboutPageProps) {
+class HomePage extends Component<HomePageProps, HomePageState> {
+  constructor(props: HomePageProps) {
     super(props);
     this.state = {};
   }
@@ -27,4 +27,4 @@ class AboutPage extends Component<AboutPageProps, AboutPageState> {
   }
 }
 
-export default AboutPage;
+export default HomePage;

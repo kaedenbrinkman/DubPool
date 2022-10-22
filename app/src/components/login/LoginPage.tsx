@@ -58,11 +58,8 @@ class LoginPage extends Component<LoginPageProps, LoginPageState> {
     // The db is mocked and creating accounts is just storing credentials in
     // local storage. This is not secure and should not be used in production.
 
-    localStorage.setItem("user", JSON.stringify({ username: this.state.username }));
-    window.location.href = "/";
-
     // as no accounts exist, always return error
-    // this.setState({ error: "Invalid username or password" });
+    this.setState({ error: "Invalid username or password" });
   }
 
   render() {
@@ -123,10 +120,10 @@ class LoginPage extends Component<LoginPageProps, LoginPageState> {
                   margin="normal"
                   required
                   fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
+                  id="netid"
+                  label="UW NetID"
+                  name="netid"
+                  autoComplete="netid"
                   autoFocus
                   value={this.state.username}
                   onChange={(e) => {

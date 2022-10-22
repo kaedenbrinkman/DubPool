@@ -10,7 +10,7 @@ class Onboarding extends Component<OnboardingProps, OnboardingState> {
     this.state = {};
   }
   render() {
-    return (<div></div>);
+    return (<div>Onboarding</div>);
   }
 }
 
