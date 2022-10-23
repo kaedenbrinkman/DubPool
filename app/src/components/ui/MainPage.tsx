@@ -2,7 +2,6 @@ import { Component } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "../home/Header";
 import AboutPage from "../home/HomePage";
-import HowItWorks from "../home/HowItWorks";
 import LoginPage from "../login/LoginPage";
 import Messages from "../messages/Messages";
 import Privacy from "../privacy/Privacy";
@@ -39,7 +38,6 @@ class MainPage extends Component<MainPageProps, MainPageState> {
           <Header />
           <Routes>
             <Route path="/" element={<AboutPage />} />
-            <Route path="/how-it-works" element={<HowItWorks />} />
             <Route path="/log-in" element={<LoginPage />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/about" element={<About />} />
