@@ -16,24 +16,18 @@ import FAQ from "../faq/FAQ";
 interface MainPageProps { }
 
 interface MainPageState {
-  user: User | null;
-}
-
-interface User {
-  first_name: string;
-  last_name: string;
-  email: string;
+  netid: string | null;
 }
 
 class MainPage extends Component<MainPageProps, MainPageState> {
   constructor(props: MainPageProps) {
     super(props);
     this.state = {
-      user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")!) : null,
+      netid: localStorage.getItem("netid"),
     };
   }
   render() {
-    if (!this.state.user) {
+    if (!this.state.netid) {
       // these pages are accessible when not logged in
       return (
         <BrowserRouter>
@@ -50,14 +44,24 @@ class MainPage extends Component<MainPageProps, MainPageState> {
         </BrowserRouter>
       );
     }
-    // these pages are accessible when logged in
+    // if onboarding not complete, show onboarding
+    if (!localStorage.getItem("onboardingComplete")) {
+      return (
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Onboarding />} />
+            <Route path="/privacy" element={<Privacy />} />
+          </Routes>
+        </BrowserRouter>
+      );
+    }
+    // show main pages
     return (
       <BrowserRouter>
         <NavBar />
         <Routes>
           <Route path="/" element={<Matches />} />
           <Route path="/messages" element={<Messages />} />
-          <Route path="/welcome" element={<Onboarding />} />
           <Route path="/privacy" element={<Privacy />} />
         </Routes>
       </BrowserRouter>

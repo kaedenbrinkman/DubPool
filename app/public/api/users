@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "id": "1",
+    "year": "Sophomore",
+    "name": "Kaeden",
+    "lat": 0,
+    "lng": 1
+  },
+  {
+    "id": "2",
+    "year": "Sophomore",
+    "name": "Aditya",
+    "lat": 0,
+    "lng": 1
+  },
+  {
+    "id": "3",
+    "year": "Junior",
+    "name": "Kaeden",
+    "lat": 0,
+    "lng": 1
+  }
+]

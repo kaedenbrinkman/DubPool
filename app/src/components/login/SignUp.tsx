@@ -60,7 +60,7 @@ class SignUpPage extends Component<SignUpPageProps, SignUpPageState> {
     // The db is mocked and creating accounts is just storing credentials in
     // local storage. This is not secure and should not be used in production.
 
-    localStorage.setItem("user", JSON.stringify({ username: this.state.username }));
+    localStorage.setItem("netid", this.state.username);
     window.location.href = "/";
   }
 

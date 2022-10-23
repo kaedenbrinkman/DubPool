@@ -18,7 +18,8 @@ class NavBar extends Component<NavBarProps, NavBarState> {
   }
   render() {
     const mainMenu = [
-      { name: "Dashboard", link: "/" },
+      { name: "Matches", link: "/" },
+      { name: "Messages", link: "/messages" },
     ];
     return (
       <header className="py-3 mb-3 border-bottom no-print">
