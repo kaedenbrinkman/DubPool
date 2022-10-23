@@ -44,7 +44,6 @@ class ProximityList extends Component<ProximityListProps, ProximityListState> {
     return data.map((d: any) => {
       const location = { lat: d.lat, lng: d.lng };
       const distance = this.calculateDistance(this.state.userLocation, location);
-      console.log(d);
       return { ...d, distance };
     }).sort((a: any, b: any) => {
       return a.distance - b.distance;
