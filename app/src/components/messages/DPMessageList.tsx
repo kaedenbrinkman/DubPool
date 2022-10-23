@@ -4,6 +4,7 @@ import { MessageList } from 'react-chat-elements';
 import { Input } from 'react-chat-elements';
 import { Button } from 'react-chat-elements'
 import 'react-chat-elements/dist/main.css';
+import ProfilePane from "./ProfilePane";
 
 let messageListReferance = React.createRef();
 let inputReferance = React.createRef();
@@ -37,9 +38,18 @@ class DPMessageList extends Component<DPMessageListProps, DPMessageListState> {
 
   loadData() {
     fetch("/api/messages/" + this.props.userId)
-      .then(response => response.json())
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error("Network response was not ok.");
+        }
+      })
       .then(data => {
         this.setState({ messages: data });
+      })
+      .catch(err => {
+        // this.loadOtherUser();
       });
   }
 
@@ -48,6 +58,7 @@ class DPMessageList extends Component<DPMessageListProps, DPMessageListState> {
       {/* <button className="btn btn-primary" onClick={() => {
         this.props.onUnSelect();
       }}>Back</button> */}
+      <ProfilePane userId={this.props.userId} />
       <MessageList
         referance={messageListReferance}
         className='message-list'

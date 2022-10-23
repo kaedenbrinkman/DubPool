@@ -4,6 +4,7 @@ import 'react-chat-elements/dist/main.css';
 
 interface DPChatListProps {
   onSelect: (chatId: number) => void;
+  user: number;
 }
 
 interface DPChatListState {
@@ -22,7 +23,26 @@ class DPChatList extends Component<DPChatListProps, DPChatListState> {
     fetch("/api/chats")
       .then(response => response.json())
       .then(data => {
-        this.setState({ chats: data });
+        if (!data.find((c: any) => c.id === this.props.user) && this.props.user) {
+          fetch("/api/users")
+            .then(response => response.json())
+            .then(data => {
+              const user = data.find((u: any) => u.id === this.props.user);
+              this.setState({
+                chats: [
+                  {
+                    "id": user.id,
+                    "avatar": "https://ui-avatars.com/api/?name=" + user.name,
+                    "alt": user.name,
+                    "title": user.name,
+                    "subtitle": "New message",
+                    "date": new Date(),
+                    "unread": 1
+                  }, ...this.state.chats]
+              });
+            });
+        }
+        this.setState({ chats: data.sort((a: any, b: any) => b.date - a.date) });
       });
   }
 
