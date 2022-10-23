@@ -2,9 +2,6 @@ import { Component } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
@@ -54,12 +51,11 @@ class LoginPage extends Component<LoginPageProps, LoginPageState> {
   componentDidMount() { }
 
   onSubmit() {
-    // IMPORTANT! To save development time, this app does not have a backend.
-    // The db is mocked and creating accounts is just storing credentials in
-    // local storage. This is not secure and should not be used in production.
-
-    // as no accounts exist, always return error
-    this.setState({ error: "Invalid username or password" });
+    const clientID = "984a4313-0cf1-4996-aab5-a21a521a1ee0";
+    const tenantID = "f6b6dd5b-f02f-441a-99a0-162ac5060bd2";
+    const redirectURL = window.location.origin;
+    let url = `https://login.microsoftonline.com/${tenantID}/oauth2/v2.0/authorize?client_id=${clientID}&response_type=code&redirect_uri=${redirectURL}&response_mode=query&scope=openid%20profile%20offline_access&state=12345`;
+    window.location.href = url;
   }
 
   render() {
@@ -116,47 +112,6 @@ class LoginPage extends Component<LoginPageProps, LoginPageState> {
                 }}
                 sx={{ mt: 1 }}
               >
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="netid"
-                  label="UW NetID"
-                  name="netid"
-                  autoComplete="netid"
-                  autoFocus
-                  value={this.state.username}
-                  onChange={(e) => {
-                    this.setState({ username: e.target.value });
-                  }}
-                />
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
-                  value={this.state.password}
-                  onChange={(e) => {
-                    this.setState({ password: e.target.value });
-                  }}
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      value="remember"
-                      color="primary"
-                      checked={this.state.rememberMe}
-                      onChange={(e) => {
-                        this.setState({ rememberMe: e.target.checked });
-                      }}
-                    />
-                  }
-                  label="Remember me"
-                />
                 <Button
                   type="submit"
                   fullWidth

@@ -5,7 +5,6 @@ import AboutPage from "../home/HomePage";
 import HowItWorks from "../home/HowItWorks";
 import Matches from "../matches/Matches";
 import LoginPage from "../login/LoginPage";
-import SignUpPage from "../login/SignUp";
 import NavBar from "./NavBar";
 import Messages from "../messages/Messages";
 import Onboarding from "../onboarding/Onboarding";
@@ -36,7 +35,6 @@ class MainPage extends Component<MainPageProps, MainPageState> {
             <Route path="/" element={<AboutPage />} />
             <Route path="/how-it-works" element={<HowItWorks />} />
             <Route path="/log-in" element={<LoginPage />} />
-            <Route path="/sign-up" element={<SignUpPage />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/about" element={<About />} />
             <Route path="/faq" element={<FAQ />} />

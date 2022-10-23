@@ -28,7 +28,6 @@ class Header extends Component<HeaderProps, HeaderState> {
 
           <div className="text-end">
             <Link to="/log-in" className="btn btn-outline-light me-2">Login</Link>
-            <Link to="/sign-up" className="btn btn-primary">Sign-up</Link>
           </div>
         </div>
       </div>
