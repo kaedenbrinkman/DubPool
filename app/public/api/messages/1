@@ -1,3 +1,14 @@
 [
-  {"fromYou": true, "timestamp": "2022-10-22T09:15:34Z", "message": "Hi Evan!"}
+  {
+    "position": "right",
+    "type": "text",
+    "text": "Hi there, wondering if you would be available to carpool on Wednesdays. I live in the Somerset area and typically leave around 7:30am.",
+    "date": 0
+  },
+  {
+    "position": "left",
+    "type": "text",
+    "text": "Yeah totally! I'm usually leaving around the same time.",
+    "date": 0
+  }
 ]
