@@ -18,13 +18,26 @@ import "./MatchMap.css";
 
 interface MatchesProps { }
 
-interface MatchesState { }
+interface MatchesState {
+  users: any[];
+}
 
 class Matches extends Component<MatchesProps, MatchesState> {
   constructor(props: MatchesProps) {
     super(props);
-    this.state = {};
+    this.state = {
+      users: [],
+    };
   }
+
+  componentDidMount() {
+    fetch("/api/users")
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState({ users: data });
+      });
+  }
+
   render() {
     const MAPBOX_ACCESS_TOKEN = "pk.eyJ1Ijoia2FlZGVuYiIsImEiOiJjbDlrbzI4bzIwMXk1M3B1bnN2b2J3Z2pzIn0.TBn8z7dcDST7Xp_Djtn59Q";
     return (<div style={{ width: "100%", height: "300px" }}>
@@ -34,10 +47,43 @@ class Matches extends Component<MatchesProps, MatchesState> {
         initialViewState={{
           longitude: -122.3035,
           latitude: 47.6553,
-          zoom: 12,
+          zoom: 11,
         }}
         mapStyle="mapbox://styles/kaedenb/ckwr9608q2wnn14o5ku9ns8jr"
+        onClick={(event) => {
+          console.log(event.lngLat);
+        }}
       >
+        <MapProvider>
+          <GeolocateControl
+            // style={{ position: "absolute", top: 0, left: 0, margin: 10 }}
+            positionOptions={{ enableHighAccuracy: true }}
+            trackUserLocation={true}
+          />
+          <Source id="users" type="geojson" data={{
+            type: "FeatureCollection",
+            features: this.state.users.map((user) => ({
+              type: "Feature",
+              geometry: {
+                type: "Point",
+                coordinates: [user.lng, user.lat],
+              },
+              properties: {
+                title: user.name,
+                description: user.description,
+              },
+            })),
+          }}>
+            <Layer
+              id="users"
+              type="symbol"
+              layout={{
+                "icon-image": "car-15",
+                "icon-allow-overlap": true,
+              }}
+            />
+          </Source>
+        </MapProvider>
       </Map>
     </div>);
   }
