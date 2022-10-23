@@ -1,4 +1,5 @@
 import { Component } from "react";
+import MatchMap from "./MatchMap";
 
 interface MatchesProps { }
 
@@ -10,7 +11,9 @@ class Matches extends Component<MatchesProps, MatchesState> {
     this.state = {};
   }
   render() {
-    return (<div></div>);
+    return (<div>
+      <MatchMap />
+    </div>);
   }
 }
 

@@ -7,6 +7,7 @@
     "@azure/msal-react": "^1.4.9",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@mapbox/mapbox-gl-geocoder": "^5.0.1",
     "@mui/icons-material": "^5.10.9",
     "@mui/material": "^5.10.10",
     "@testing-library/jest-dom": "^5.16.5",
@@ -18,9 +19,11 @@
     "@types/react-dom": "^18.0.6",
     "bootstrap": "^5.2.2",
     "bootstrap-icons": "^1.9.1",
+    "mapbox-gl": "^2.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.0",
+    "react-map-gl": "^7.0.19",
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
     "typescript": "^4.8.4",
@@ -36,7 +39,8 @@
     "workbox-range-requests": "^6.5.4",
     "workbox-routing": "^6.5.4",
     "workbox-strategies": "^6.5.4",
-    "workbox-streams": "^6.5.4"
+    "workbox-streams": "^6.5.4",
+    "worker-loader": "^3.0.8"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -62,5 +66,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/mapbox__mapbox-gl-geocoder": "^4.7.3"
   }
 }
