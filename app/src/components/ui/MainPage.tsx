@@ -12,6 +12,7 @@ import Privacy from "../privacy/Privacy";
 import About from "../about/About";
 import FAQ from "../faq/FAQ";
 import { AuthenticatedTemplate, UnauthenticatedTemplate } from '@azure/msal-react';
+import AppUi from "./AppUi";
 
 interface MainPageProps { }
 
@@ -31,20 +32,12 @@ class MainPage extends Component<MainPageProps, MainPageState> {
       <BrowserRouter>
         <AuthenticatedTemplate>
           <NavBar />
-          {localStorage.getItem("onboardingComplete") ? (
-            <Routes>
-              <Route path="/" element={<Onboarding />} />
-              <Route path="/privacy" element={<Privacy />} />
-              <Route path="*" element={<Onboarding />} />
-            </Routes>
-          ) : (
-            <Routes>
-              <Route path="/" element={<Matches />} />
-              <Route path="/messages" element={<Messages />} />
-              <Route path="/privacy" element={<Privacy />} />
-              <Route path="*" element={<Matches />} />
-            </Routes>
-          )}
+          <Routes>
+            <Route path="/" element={<AppUi />} />
+            <Route path="/messages" element={<Messages />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="*" element={<AppUi />} />
+          </Routes>
         </AuthenticatedTemplate>
         <UnauthenticatedTemplate>
           <Header />

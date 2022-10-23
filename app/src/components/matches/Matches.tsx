@@ -12,7 +12,15 @@ class Matches extends Component<MatchesProps, MatchesState> {
   }
   render() {
     return (<div>
+      <h1 className="color-pink">Welcome!</h1>
       <MatchMap />
+      <div className="d-flex flex-column">
+        <div><button className="btn btn-primary mt-2">Where</button></div>
+        <div><button className="btn btn-primary mt-2">When</button></div>
+        <div><button className="btn btn-primary mt-2">Search</button></div>
+        <div><button className="btn btn-primary mt-2">Host</button></div>
+        <div className="m-5"></div>
+      </div>
     </div>);
   }
 }

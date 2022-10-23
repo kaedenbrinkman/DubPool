@@ -19,42 +19,10 @@ class NavBar extends Component<NavBarProps, NavBarState> {
     };
   }
   render() {
-    const mainMenu = [
-      { name: "Matches", link: "/" },
-      { name: "Messages", link: "/messages" },
-    ];
     return (
       <header className="py-3 mb-3 border-bottom no-print">
         <div className="container-fluid d-grid gap-3 align-items-center custom-grid-template-columns">
           <div className="dropdown">
-            <Link
-              to="/"
-              className="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-dark text-decoration-none dropdown-toggle"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <i className="bi bi-car fs-4 mb-2 mt-0"></i>
-              <h1 className="fs-5 ms-1">DubPool</h1>
-            </Link>
-            <ul className="dropdown-menu text-small shadow">
-              {mainMenu.map((menuItem) => {
-                let active = this.state.currentPage === menuItem.link;
-                return (
-                  <li key={menuItem.name}>
-                    <Link
-                      to={menuItem.link}
-                      className={"dropdown-item" + (active ? " active" : "")}
-                      aria-current={active ? "page" : undefined}
-                      onClick={() => {
-                        this.setState({ currentPage: menuItem.link });
-                      }}
-                    >
-                      {menuItem.name}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
           </div>
 
           <div className="d-flex align-items-center">

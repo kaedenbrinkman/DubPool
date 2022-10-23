@@ -4,7 +4,11 @@
 
 /* change bootstrap primary color */
 .btn-primary {
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  color: #000 !important;
+  background-color: #f3b0ff !important;
+  border-color: #f3b0ff !important;
+}
+
+.color-pink {
+  color: #f3b0ff !important;
 }
