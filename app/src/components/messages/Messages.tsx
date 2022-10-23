@@ -20,7 +20,9 @@ class Messages extends Component<MessagesProps, MessagesState> {
       <DPChatList onSelect={(chatId: number) => {
         this.setState({ chatSelected: chatId });
       }} />
-      {this.state.chatSelected > 0 && <DPMessageList userId={this.state.chatSelected} />}
+      {this.state.chatSelected > 0 && <DPMessageList userId={this.state.chatSelected} onUnSelect={() => {
+        this.setState({ chatSelected: 0 });
+      }} />}
     </div>);
   }
 }

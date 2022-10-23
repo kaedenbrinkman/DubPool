@@ -27,13 +27,13 @@ class DPChatList extends Component<DPChatListProps, DPChatListState> {
   }
 
   render() {
-    return (<div className="col-4">
+    return (<div className="col-12 col-lg-4">
       <h2 className="text-pink mt-2">Messages</h2>
       <ChatList
         className='chat-list'
         dataSource={this.state.chats}
         id="chat-list"
-        lazyLoadingImage="https://facebook.github.io/react/img/logo.svg"
+        lazyLoadingImage="https://facebook.github.io/react/img/logo_og.png"
         onClick={(chat: any) => {
           this.props.onSelect(chat.id);
         }}
