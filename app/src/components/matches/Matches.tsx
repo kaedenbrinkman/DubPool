@@ -12,7 +12,7 @@ class Matches extends Component<MatchesProps, MatchesState> {
   }
   render() {
     return (<div>
-      <h1 className="color-pink">Welcome!</h1>
+      <h1 className="color-pink mt-3">Welcome!</h1>
       <MatchMap />
       <div className="d-flex flex-column">
         <div><button className="btn btn-primary mt-2">Where</button></div>

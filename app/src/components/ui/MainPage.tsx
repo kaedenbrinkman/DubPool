@@ -3,11 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "../home/Header";
 import AboutPage from "../home/HomePage";
 import HowItWorks from "../home/HowItWorks";
-import Matches from "../matches/Matches";
 import LoginPage from "../login/LoginPage";
-import NavBar from "./NavBar";
 import Messages from "../messages/Messages";
-import Onboarding from "../onboarding/Onboarding";
 import Privacy from "../privacy/Privacy";
 import About from "../about/About";
 import FAQ from "../faq/FAQ";
@@ -31,7 +28,6 @@ class MainPage extends Component<MainPageProps, MainPageState> {
     return (
       <BrowserRouter>
         <AuthenticatedTemplate>
-          <NavBar />
           <Routes>
             <Route path="/" element={<AppUi />} />
             <Route path="/messages" element={<Messages />} />
