@@ -15,8 +15,14 @@ interface AppUiState {
 class AppUi extends Component<AppUiProps, AppUiState> {
   constructor(props: AppUiProps) {
     super(props);
+    let page = 0;
+    if (window.location.pathname.startsWith("/messages")) {
+      page = 1;
+    } else if (window.location.pathname === "/account") {
+      page = 2;
+    }
     this.state = {
-      page: 0,
+      page: page
     };
   }
   render() {

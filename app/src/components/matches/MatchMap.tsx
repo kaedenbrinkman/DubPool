@@ -20,6 +20,7 @@ interface MatchesProps { }
 
 interface MatchesState {
   users: any[];
+  map: any;
 }
 
 class Matches extends Component<MatchesProps, MatchesState> {
@@ -27,6 +28,7 @@ class Matches extends Component<MatchesProps, MatchesState> {
     super(props);
     this.state = {
       users: [],
+      map: null,
     };
   }
 
@@ -51,7 +53,16 @@ class Matches extends Component<MatchesProps, MatchesState> {
         }}
         mapStyle="mapbox://styles/kaedenb/ckwr9608q2wnn14o5ku9ns8jr"
         onClick={(event) => {
-          console.log(event.lngLat);
+          // console.log(event.lngLat);
+        }}
+        ref={(map: any) => {
+          if (map && !this.state.map) {
+            this.setState({ map });
+            map.on('click', 'users', (e: any) => {
+              console.log(e);
+              window.location.href = "/messages/" + e.features[0].properties.id;
+            });
+          }
         }}
       >
         <MapProvider>
@@ -71,6 +82,7 @@ class Matches extends Component<MatchesProps, MatchesState> {
               properties: {
                 title: user.name,
                 description: user.description,
+                id: user.id,
               },
             })),
           }}>
@@ -80,6 +92,12 @@ class Matches extends Component<MatchesProps, MatchesState> {
               layout={{
                 "icon-image": "car-15",
                 "icon-allow-overlap": true,
+                "icon-ignore-placement": true,
+                "icon-size": 1.5,
+                "text-field": "{title}",
+                "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+                "text-offset": [0, 0.6],
+                "text-anchor": "top",
               }}
             />
           </Source>
