@@ -122,6 +122,9 @@ class LoginPage extends Component<LoginPageProps, LoginPageState> {
               <Typography component="h1" variant="h5">
                 Sign in
               </Typography>
+              <Typography component="p" variant="subtitle2">
+                Only UW Microsoft accounts are supported
+              </Typography>
               <LoginForm />
             </Box>
           </Grid>

@@ -55,10 +55,8 @@ class DPMessageList extends Component<DPMessageListProps, DPMessageListState> {
 
   render() {
     return (<div className="col-12 col-lg-8 mt-5">
-      {/* <button className="btn btn-primary" onClick={() => {
-        this.props.onUnSelect();
-      }}>Back</button> */}
       <ProfilePane userId={this.props.userId} />
+      <hr />
       <MessageList
         referance={messageListReferance}
         className='message-list'

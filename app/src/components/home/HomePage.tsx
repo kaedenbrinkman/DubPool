@@ -18,7 +18,7 @@ class HomePage extends Component<HomePageProps, HomePageState> {
           <div className="col-md-5 p-lg-5 mx-auto my-5">
             <h1 className="display-4 fw-normal">Carpool, made easy</h1>
             <p className="lead fw-normal">Find other students whose commuting schedule matches yours.</p>
-            <Link className="btn btn-outline-secondary" to="/sign-up">Sign Up</Link>
+            <Link className="btn btn-outline-secondary" to="/log-in">Sign Up</Link>
           </div>
           <div className="product-device shadow-sm d-none d-md-block"></div>
           <div className="product-device product-device-2 shadow-sm d-none d-md-block"></div>
