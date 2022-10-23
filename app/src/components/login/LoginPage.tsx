@@ -8,6 +8,8 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
+import { loginRequest } from "./authConfig";
+import { useMsal } from "@azure/msal-react";
 
 interface LoginPageProps {
 }
@@ -35,6 +37,31 @@ function Copyright(props: any) {
       {"."}
     </Typography>
   );
+}
+
+function LoginForm() {
+  const { instance } = useMsal();
+  return <Box
+    component="form"
+    noValidate
+    onSubmit={(e) => {
+      e.preventDefault();
+      instance.loginRedirect(loginRequest).catch(e => {
+        console.log(e);
+      });
+    }}
+    sx={{ mt: 1 }}
+  >
+    <Button
+      type="submit"
+      fullWidth
+      variant="contained"
+      sx={{ mt: 3, mb: 2 }}
+    >
+      Sign In
+    </Button>
+    <Copyright sx={{ mt: 5 }} />
+  </Box>;
 }
 
 class LoginPage extends Component<LoginPageProps, LoginPageState> {
@@ -103,28 +130,7 @@ class LoginPage extends Component<LoginPageProps, LoginPageState> {
               <Typography component="h1" variant="h5">
                 Sign in
               </Typography>
-              <Box
-                component="form"
-                noValidate
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  this.onSubmit();
-                }}
-                sx={{ mt: 1 }}
-              >
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
-                >
-                  Sign In
-                </Button>
-                {this.state.error && (
-                  <Typography color="error">{this.state.error}</Typography>
-                )}
-                <Copyright sx={{ mt: 5 }} />
-              </Box>
+              <LoginForm />
             </Box>
           </Grid>
         </Grid>

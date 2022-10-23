@@ -11,6 +11,7 @@ import Onboarding from "../onboarding/Onboarding";
 import Privacy from "../privacy/Privacy";
 import About from "../about/About";
 import FAQ from "../faq/FAQ";
+import { AuthenticatedTemplate, UnauthenticatedTemplate } from '@azure/msal-react';
 
 interface MainPageProps { }
 
@@ -26,10 +27,24 @@ class MainPage extends Component<MainPageProps, MainPageState> {
     };
   }
   render() {
-    if (!this.state.netid) {
-      // these pages are accessible when not logged in
-      return (
-        <BrowserRouter>
+    return (
+      <BrowserRouter>
+        <AuthenticatedTemplate>
+          <NavBar />
+          {localStorage.getItem("onboardingComplete") ? (
+            <Routes>
+              <Route path="/" element={<Onboarding />} />
+              <Route path="/privacy" element={<Privacy />} />
+            </Routes>
+          ) : (
+            <Routes>
+              <Route path="/" element={<Matches />} />
+              <Route path="/messages" element={<Messages />} />
+              <Route path="/privacy" element={<Privacy />} />
+            </Routes>
+          )}
+        </AuthenticatedTemplate>
+        <UnauthenticatedTemplate>
           <Header />
           <Routes>
             <Route path="/" element={<AboutPage />} />
@@ -39,29 +54,7 @@ class MainPage extends Component<MainPageProps, MainPageState> {
             <Route path="/about" element={<About />} />
             <Route path="/faq" element={<FAQ />} />
           </Routes>
-        </BrowserRouter>
-      );
-    }
-    // if onboarding not complete, show onboarding
-    if (!localStorage.getItem("onboardingComplete")) {
-      return (
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Onboarding />} />
-            <Route path="/privacy" element={<Privacy />} />
-          </Routes>
-        </BrowserRouter>
-      );
-    }
-    // show main pages
-    return (
-      <BrowserRouter>
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<Matches />} />
-          <Route path="/messages" element={<Messages />} />
-          <Route path="/privacy" element={<Privacy />} />
-        </Routes>
+        </UnauthenticatedTemplate>
       </BrowserRouter>
     );
   }
