@@ -1,10 +1,19 @@
 [
   {
     "id": 1,
-    "avatar": "https://github.com/kaedenbrinkman.png",
-    "alt": "Kaeden Brinkman",
-    "title": "Kaeden B",
+    "avatar": "https://ui-avatars.com/api/?name=Evan+S",
+    "alt": "Evan S",
+    "title": "Evan S",
     "subtitle": "Yeah totally! I'm usually leaving...",
+    "date": 0,
+    "unread": 1
+  },
+  {
+    "id": 2,
+    "avatar": "https://ui-avatars.com/api/?name=John+Doe",
+    "alt": "Shreya R",
+    "title": "Shreya R",
+    "subtitle": "You: No worries! I'll see if I can find...",
     "date": 0,
     "unread": 0
   }

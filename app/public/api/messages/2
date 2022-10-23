@@ -1,0 +1,20 @@
+[
+  {
+    "position": "right",
+    "type": "text",
+    "text": "Hi there, I saw that you usually head back home to Bellevue on the weekends. Would you be able to give me a ride home on Friday? I can pay you for gas.",
+    "date": 0
+  },
+  {
+    "position": "left",
+    "type": "text",
+    "text": "Sorry, I actually have plans tonight and I'm not sure if I'll have time.",
+    "date": 0
+  },
+  {
+    "position": "right",
+    "type": "text",
+    "text": "No worries! I'll see if I can find someone else 🙂",
+    "date": 0
+  }
+]

@@ -26,6 +26,16 @@ class DPMessageList extends Component<DPMessageListProps, DPMessageListState> {
   }
 
   componentDidMount() {
+    this.loadData();
+  }
+
+  componentDidUpdate(prevProps: DPMessageListProps) {
+    if (prevProps.userId !== this.props.userId) {
+      this.loadData();
+    }
+  }
+
+  loadData() {
     fetch("/api/messages/" + this.props.userId)
       .then(response => response.json())
       .then(data => {
