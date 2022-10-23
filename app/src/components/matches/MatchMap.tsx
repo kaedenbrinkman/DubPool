@@ -7,8 +7,6 @@ import Map, {
 } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import mapboxgl from "mapbox-gl";
-import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
-import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import "./MatchMap.css";
 
 // fix transpilation
@@ -53,7 +51,7 @@ class Matches extends Component<MatchesProps, MatchesState> {
         }}
         mapStyle="mapbox://styles/kaedenb/ckwr9608q2wnn14o5ku9ns8jr"
         onClick={(event) => {
-          // console.log(event.lngLat);
+          console.log(event.lngLat.lng, event.lngLat.lat);
         }}
         ref={(map: any) => {
           if (map && !this.state.map) {

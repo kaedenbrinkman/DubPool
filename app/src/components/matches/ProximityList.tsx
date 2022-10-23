@@ -47,7 +47,7 @@ class ProximityList extends Component<ProximityListProps, ProximityListState> {
       return { ...d, distance };
     }).sort((a: any, b: any) => {
       return a.distance - b.distance;
-    });
+    }).slice(0, 5);
   }
 
   calculateDistance(p1: { lat: number, lng: number }, p2: { lat: number, lng: number }) {
@@ -55,10 +55,20 @@ class ProximityList extends Component<ProximityListProps, ProximityListState> {
   }
 
   render() {
+    if (!this.state.userLocation) {
+      // if location access is allowed but not loaded yet
+      if (this.state.userLocation === null) {
+        return (<div className="col-12 col-lg-8 mt-5">
+          <h3>Finding matches based on your location...</h3>
+        </div>);
+      }
+
+      return <div></div>
+    }
     return <div className="list-group">
       {this.state.users.map(user => {
         return <a href={"/messages/" + user.id} className="list-group-item list-group-item-action" aria-current="true">
-          {user.name + (user.distance ? (" - " + user.distance.toFixed(2) + " mi away") : "")}
+          {user.name + " (" + user.year + ") " + (user.distance ? (" - lives " + user.distance.toFixed(2) + " mi away") : "")}
         </a>;
       })}
     </div>;

@@ -34,7 +34,7 @@ class Account extends Component<AccountProps, AccountState> {
 function SignOutBtn() {
   const { instance } = useMsal();
   return <div>
-    <button className="btn btn-primary mt-2" onClick={() => {
+    <button className="btn btn-primary mt-2 mb-5" onClick={() => {
       instance.logout();
       window.location.href = "/";
     }}>Sign out</button>
