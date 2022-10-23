@@ -35,12 +35,14 @@ class MainPage extends Component<MainPageProps, MainPageState> {
             <Routes>
               <Route path="/" element={<Onboarding />} />
               <Route path="/privacy" element={<Privacy />} />
+              <Route path="*" element={<Onboarding />} />
             </Routes>
           ) : (
             <Routes>
               <Route path="/" element={<Matches />} />
               <Route path="/messages" element={<Messages />} />
               <Route path="/privacy" element={<Privacy />} />
+              <Route path="*" element={<Matches />} />
             </Routes>
           )}
         </AuthenticatedTemplate>

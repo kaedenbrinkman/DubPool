@@ -77,14 +77,6 @@ class LoginPage extends Component<LoginPageProps, LoginPageState> {
 
   componentDidMount() { }
 
-  onSubmit() {
-    const clientID = "984a4313-0cf1-4996-aab5-a21a521a1ee0";
-    const tenantID = "f6b6dd5b-f02f-441a-99a0-162ac5060bd2";
-    const redirectURL = window.location.origin;
-    let url = `https://login.microsoftonline.com/${tenantID}/oauth2/v2.0/authorize?client_id=${clientID}&response_type=code&redirect_uri=${redirectURL}&response_mode=query&scope=openid%20profile%20offline_access&state=12345`;
-    window.location.href = url;
-  }
-
   render() {
     return (
       <div>

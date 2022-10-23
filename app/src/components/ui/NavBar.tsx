@@ -2,6 +2,8 @@ import { Component } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
+import { loginRequest } from "../login/authConfig";
+import { useMsal } from "@azure/msal-react";
 
 interface NavBarProps { }
 
@@ -81,7 +83,7 @@ class NavBar extends Component<NavBarProps, NavBarState> {
                 />
               </Link>
               <ul className="dropdown-menu text-small shadow">
-              <li>
+                <li>
                   <Link className="dropdown-item" to="/privacy">
                     Privacy
                   </Link>
@@ -95,15 +97,7 @@ class NavBar extends Component<NavBarProps, NavBarState> {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <button
-                    className="dropdown-item"
-                    onClick={() => {
-                      localStorage.clear();
-                      window.location.href = "/";
-                    }}
-                  >
-                    Sign out
-                  </button>
+                  <SignOutBtn />
                 </li>
               </ul>
             </div>
@@ -112,6 +106,19 @@ class NavBar extends Component<NavBarProps, NavBarState> {
       </header>
     );
   }
+}
+
+function SignOutBtn() {
+  const { instance } = useMsal();
+  return <button
+    className="dropdown-item"
+    onClick={() => {
+      instance.logout();
+      window.location.href = "/";
+    }}
+  >
+    Sign out
+  </button>;
 }
 
 export default NavBar;
