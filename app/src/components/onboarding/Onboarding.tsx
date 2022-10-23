@@ -1,6 +1,7 @@
 import { Component } from "react";
 import PromptForLocation from "./PromptForLocation";
 import PromptForName from "./PromptForName";
+import PromptForSchedule from "./PromptForSchedule";
 
 interface OnboardingProps { }
 
@@ -8,6 +9,7 @@ interface OnboardingState {
   first_name: string;
   last_name: string;
   location: string;
+  schedule: string[][];
 }
 
 class Onboarding extends Component<OnboardingProps, OnboardingState> {
@@ -17,6 +19,7 @@ class Onboarding extends Component<OnboardingProps, OnboardingState> {
       first_name: localStorage.getItem("first_name") || "",
       last_name: localStorage.getItem("last_name") || "",
       location: localStorage.getItem("location") || "",
+      schedule: JSON.parse(localStorage.getItem("schedule") || "[]"),
     };
   }
   render() {
@@ -36,6 +39,15 @@ class Onboarding extends Component<OnboardingProps, OnboardingState> {
         <PromptForLocation onCompleted={(location) => {
           localStorage.setItem("location", location);
           this.setState({ location });
+        }} />
+      );
+    }
+    // STEP 3: Ask for schedule
+    if (!localStorage.getItem("schedule")) {
+      return (
+        <PromptForSchedule onCompleted={(schedule) => {
+          localStorage.setItem("schedule", JSON.stringify(schedule));
+          this.setState({ schedule });
         }} />
       );
     }
